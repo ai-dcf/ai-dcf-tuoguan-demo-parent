@@ -14,7 +14,7 @@ export interface Homework {
   subject: string;
   title: string;
   status: 'pending' | 'submitted' | 'completed';
-  rating?: 'A' | 'B' | 'C' | 'D';
+  rating?: string;
   submitTime?: string;
   images?: string[];
   feedback?: string;

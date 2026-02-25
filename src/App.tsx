@@ -71,28 +71,38 @@ function App() {
       </div>
 
       {/* Bottom Navigation */}
-      <div className="fixed bottom-0 left-0 right-0 bg-white/90 backdrop-blur-md border-t border-slate-200 flex justify-around items-center h-16 pb-safe z-50 shadow-lg">
-        <button 
-          onClick={() => setCurrentView('home')}
-          className={`flex flex-col items-center justify-center w-full h-full transition-all duration-200 active:scale-95 ${currentView === 'home' ? 'text-blue-600' : 'text-slate-400'}`}
-        >
-          <Home size={24} strokeWidth={currentView === 'home' ? 2.5 : 2} />
-          <span className="text-[10px] font-medium mt-1">首页</span>
-        </button>
-        <button 
-          onClick={() => setCurrentView('learning')}
-          className={`flex flex-col items-center justify-center w-full h-full transition-all duration-200 active:scale-95 ${currentView === 'learning' ? 'text-blue-600' : 'text-slate-400'}`}
-        >
-          <BookOpen size={24} strokeWidth={currentView === 'learning' ? 2.5 : 2} />
-          <span className="text-[10px] font-medium mt-1">学情</span>
-        </button>
-        <button 
-          onClick={() => setCurrentView('mine')}
-          className={`flex flex-col items-center justify-center w-full h-full transition-all duration-200 active:scale-95 ${currentView === 'mine' ? 'text-blue-600' : 'text-slate-400'}`}
-        >
-          <User size={24} strokeWidth={currentView === 'mine' ? 2.5 : 2} />
-          <span className="text-[10px] font-medium mt-1">我的</span>
-        </button>
+      <div className="fixed bottom-0 left-0 right-0 glass pb-safe z-50">
+        <div className="flex justify-around items-center h-16 px-2">
+          <button 
+            onClick={() => setCurrentView('home')}
+            className={`flex-1 flex flex-col items-center justify-center h-full transition-all duration-300 ${currentView === 'home' ? 'text-blue-600 scale-105' : 'text-slate-400 hover:text-slate-600'}`}
+          >
+            <div className={`p-1.5 rounded-xl transition-all duration-300 ${currentView === 'home' ? 'bg-blue-50' : 'bg-transparent'}`}>
+              <Home size={24} strokeWidth={currentView === 'home' ? 2.5 : 2} className="transition-transform duration-300" />
+            </div>
+            <span className="text-[10px] font-bold mt-0.5">首页</span>
+          </button>
+          
+          <button 
+            onClick={() => setCurrentView('learning')}
+            className={`flex-1 flex flex-col items-center justify-center h-full transition-all duration-300 ${currentView === 'learning' ? 'text-blue-600 scale-105' : 'text-slate-400 hover:text-slate-600'}`}
+          >
+            <div className={`p-1.5 rounded-xl transition-all duration-300 ${currentView === 'learning' ? 'bg-blue-50' : 'bg-transparent'}`}>
+              <BookOpen size={24} strokeWidth={currentView === 'learning' ? 2.5 : 2} className="transition-transform duration-300" />
+            </div>
+            <span className="text-[10px] font-bold mt-0.5">学情</span>
+          </button>
+          
+          <button 
+            onClick={() => setCurrentView('mine')}
+            className={`flex-1 flex flex-col items-center justify-center h-full transition-all duration-300 ${currentView === 'mine' ? 'text-blue-600 scale-105' : 'text-slate-400 hover:text-slate-600'}`}
+          >
+            <div className={`p-1.5 rounded-xl transition-all duration-300 ${currentView === 'mine' ? 'bg-blue-50' : 'bg-transparent'}`}>
+              <User size={24} strokeWidth={currentView === 'mine' ? 2.5 : 2} className="transition-transform duration-300" />
+            </div>
+            <span className="text-[10px] font-bold mt-0.5">我的</span>
+          </button>
+        </div>
       </div>
     </div>
   );
