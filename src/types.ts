@@ -1,4 +1,4 @@
-export type ViewState = 'home' | 'learning' | 'mine' | 'homework-detail' | 'mistake-detail' | 'leave-apply' | 'history';
+export type ViewState = 'home' | 'learning' | 'mine' | 'homework-detail' | 'mistake-detail' | 'leave-apply' | 'history' | 'recipe' | 'review';
 
 export interface Child {
   id: string;

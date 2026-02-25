@@ -1,73 +1,72 @@
-# React + TypeScript + Vite
+# 托管班家长端 H5 Demo
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+这是一个基于 **托管班设计需求-家长端-v1.md** 快速构建的纯静态 H5 Demo，旨在辅助与客户澄清家长端的核心业务流程与交互细节。
 
-Currently, two official plugins are available:
+## 🎯 已实现核心场景
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+本项目重点还原了家长端的核心关注点及交互流程：
 
-## React Compiler
+1.  **首页总览 (HomePage)**
+    *   **核心功能**：多子女快速切换、今日动态看板（到离班时间、作业进度、表现概览）。
+    *   **交互**：点击顶部头像切换不同子女数据，数据实时刷新。
+    *   **验证点**：确认“一屏掌握今日动态”的视觉布局与信息层级。
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+2.  **学情详情 (LearningPage)**
+    *   **核心功能**：展示作业完成详情（评级/评语）、每日表现点评（标签/图文）、错题记录。
+    *   **交互**：
+        *   **作业反馈**：查看老师对每一项作业的 A/B/C/D 评级及具体建议。
+        *   **表现点评**：查看老师打出的标签（如“专注”、“积极”）及现场照片。
+        *   **错题本**：查看错题图片及归因分析。
+    *   **验证点**：确认家长对孩子在校表现信息的获取深度与便捷度。
 
-## Expanding the ESLint configuration
+3.  **个人中心 (MinePage)**
+    *   **核心功能**：管理关联子女档案，提供家校沟通快捷工具。
+    *   **交互**：查看子女档案详情，一键联系老师，查看机构通知等。
+    *   **验证点**：确认多子女管理及常用工具的易用性。
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 🚀 如何运行
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+本项目已配置好所有依赖，您可以直接运行：
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### 1. 启动本地预览 (推荐)
+```bash
+npm run dev
 ```
+启动后打开浏览器访问控制台输出的地址 (通常是 http://localhost:5173)，即可在手机模式下体验交互。
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### 2. 构建静态文件
+```bash
+npm run build
 ```
+构建产物位于 `dist/` 目录，可直接部署到任何静态服务器或发送给客户体验。
+
+## ☁️ 部署指南 (Vercel)
+
+本项目支持一键部署至 [Vercel](https://vercel.com)。
+
+### 1. 基础部署
+1. 将代码提交至 GitHub/GitLab。
+2. 登录 Vercel，点击 **Add New...** -> **Project**。
+3. 导入本项目仓库，框架预设选择 **Vite** (通常会自动识别)。
+4. 点击 **Deploy** 等待构建完成。
+
+### 2. 国内访问配置 (重要) 🇨🇳
+由于 `*.vercel.app` 默认域名在国内访问不稳定，**强烈建议绑定自定义域名**。
+
+**配置步骤：**
+1.  进入 Vercel 项目 **Settings** -> **Domains**。
+2.  添加您的二级域名 (例如: `parent-demo.gorun996.com`)。
+3.  登录域名服务商 (阿里云/腾讯云等) 控制台，添加 **CNAME** 记录：
+    *   **主机记录 (Name)**: `parent-demo` (根据您的前缀)
+    *   **记录值 (Value)**: `cname.vercel-dns.com`
+4.  等待生效后，即可通过自定义域名流畅访问。
+
+## 🛠️ 技术栈
+*   **React 19 + TypeScript**: 现代前端框架
+*   **Tailwind CSS v4**: 高性能样式引擎 (已配置 Vite 插件)
+*   **Lucide React**: 统一图标库
+*   **Vite**: 极速构建工具
+
+## ⚠️ 注意事项
+*   本项目为**纯静态 Demo**，所有数据均为本地 Mock 数据，刷新页面后会重置。
+*   部分次要页面（如请假申请、历史记录详情）仅作为占位展示，不包含完整逻辑。

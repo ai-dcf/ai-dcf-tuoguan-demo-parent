@@ -71,6 +71,11 @@ const MinePage: React.FC<MinePageProps> = ({ activeChild, children }) => {
             ].map((tool, index, arr) => (
               <button 
                 key={tool.label}
+                onClick={() => {
+                  if (tool.label === '联系老师') {
+                    alert('正在拨打班主任电话: 13800138000');
+                  }
+                }}
                 className={`w-full p-4 flex items-center justify-between group active:bg-slate-50 transition-colors ${index !== arr.length - 1 ? 'border-b border-slate-50' : ''}`}
               >
                 <div className="flex items-center gap-3">

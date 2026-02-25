@@ -121,7 +121,7 @@ const HomePage: React.FC<HomePageProps> = ({ activeChild, children, onChildSwitc
               <span className="font-bold text-slate-700">学情详情</span>
             </button>
             <button 
-              onClick={() => onNavigate('learning')}
+              onClick={() => onNavigate('mistake-detail')}
               className="bg-white p-4 rounded-3xl border border-slate-100 shadow-sm flex flex-col items-center justify-center gap-3 active:scale-95 transition-all group"
             >
               <div className="w-12 h-12 bg-purple-50 rounded-2xl flex items-center justify-center text-purple-500 group-hover:scale-110 transition-transform">
@@ -130,7 +130,7 @@ const HomePage: React.FC<HomePageProps> = ({ activeChild, children, onChildSwitc
               <span className="font-bold text-slate-700">错题本</span>
             </button>
             <button 
-              onClick={() => onNavigate('learning')}
+              onClick={() => onNavigate('review')}
               className="bg-white p-4 rounded-3xl border border-slate-100 shadow-sm flex flex-col items-center justify-center gap-3 active:scale-95 transition-all group"
             >
               <div className="w-12 h-12 bg-yellow-50 rounded-2xl flex items-center justify-center text-yellow-500 group-hover:scale-110 transition-transform">
@@ -139,6 +139,7 @@ const HomePage: React.FC<HomePageProps> = ({ activeChild, children, onChildSwitc
               <span className="font-bold text-slate-700">表现点评</span>
             </button>
             <button 
+              onClick={() => onNavigate('recipe')}
               className="bg-white p-4 rounded-3xl border border-slate-100 shadow-sm flex flex-col items-center justify-center gap-3 active:scale-95 transition-all group"
             >
               <div className="w-12 h-12 bg-green-50 rounded-2xl flex items-center justify-center text-green-500 group-hover:scale-110 transition-transform">

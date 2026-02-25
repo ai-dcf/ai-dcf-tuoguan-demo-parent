@@ -3,6 +3,10 @@ import { Home, BookOpen, User } from 'lucide-react';
 import HomePage from './pages/HomePage';
 import LearningPage from './pages/LearningPage';
 import MinePage from './pages/MinePage';
+import RecipePage from './pages/RecipePage';
+import LeavePage from './pages/LeavePage';
+import MistakePage from './pages/MistakePage';
+import ReviewPage from './pages/ReviewPage';
 import type { ViewState, Child } from './types';
 import { dataManager } from './utils/dataManager';
 
@@ -30,6 +34,30 @@ function App() {
         )}
         {currentView === 'learning' && (
           <LearningPage 
+            activeChild={activeChild}
+            onBack={() => setCurrentView('home')}
+            onNavigate={(view) => setCurrentView(view)}
+          />
+        )}
+        {currentView === 'recipe' && (
+          <RecipePage 
+            onBack={() => setCurrentView('home')}
+          />
+        )}
+        {currentView === 'leave-apply' && (
+          <LeavePage 
+            activeChild={activeChild}
+            onBack={() => setCurrentView('home')}
+          />
+        )}
+        {currentView === 'mistake-detail' && (
+          <MistakePage 
+            activeChild={activeChild}
+            onBack={() => setCurrentView('home')}
+          />
+        )}
+        {currentView === 'review' && (
+          <ReviewPage 
             activeChild={activeChild}
             onBack={() => setCurrentView('home')}
           />
